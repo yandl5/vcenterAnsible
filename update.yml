@@ -1,0 +1,11 @@
+---
+- name: Update Linux System
+  hosts: all
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  tasks:
+    - name: YUM | Update System
+      yum: name=* state=latest update_cache=yes
+      when: ansible_distribution == "CentOS" or ansible_distribution == "Rocky" or ansible_distribution == "RedHat"
+
+...
